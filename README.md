@@ -19,3 +19,4 @@
   ```
 
 - Successfully created the "Managify" database on the local machine.
+- Custom security config created and Jsonwebtoken added.
