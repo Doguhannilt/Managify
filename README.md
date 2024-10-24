@@ -57,4 +57,25 @@
 - Final JWT Integration:
    - Successfully integrated JWT-based authentication, allowing the application to generate tokens during signup and signin, and store them securely.
 
+**23 October**
 
+## Database Schema Overview
+
+The project uses a relational database with the following main entities:
+
+- **Users**: Stores user information including their full name, email, password, and the number of projects they manage.
+- **Issues**: Represents issues or tasks related to a project, tracking title, status, priority, and tags.
+- **Projects**: Contains project details like name, description, category, and associated tags.
+- **Chat**: Represents group chats associated with users and projects.
+- **Messages**: Stores the content of chat messages along with their timestamps.
+- **Comments**: Holds comments on issues, tracking content and creation date.
+
+### Relationships:
+- Users are linked to Issues and Comments.
+- Issues are linked to Projects and Comments.
+- Chat is connected to Messages, Users, and Projects.
+
+
+**24 October**
+
+![Untitled](https://github.com/user-attachments/assets/0bc7d2b8-e035-4328-a8b0-9ce65eb2b3a1)
