@@ -79,3 +79,18 @@ The project uses a relational database with the following main entities:
 **24 October**
 
 ![Untitled](https://github.com/user-attachments/assets/0bc7d2b8-e035-4328-a8b0-9ce65eb2b3a1)
+
+
+**25 October**
+
+
+- **ChatService.java**: Updated the chat service interface to improve or modify chat-related functionalities.
+- **ProjectService.java**: Enhanced the project service interface, adding new methods or improving existing ones.
+- **UserService.java**: Updated the user service interface to better manage user-related functionalities.
+- **ChatRepository.java**: Modified the chat repository to improve how chat data is retrieved and stored.
+- **ProjectRepository.java**: Adjusted the project repository for better handling of project data.
+- **ChatServiceImp.java**: Implemented changes to improve the chat service logic.
+- **ProjectServiceImp.java**: Updated the project service implementation to fix issues or add enhancements.
+- **UserServiceImp.java**: Enhanced the user service implementation, improving functionality and performance. 
+
+
