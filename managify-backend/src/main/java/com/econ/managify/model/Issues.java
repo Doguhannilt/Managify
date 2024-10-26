@@ -30,9 +30,8 @@ public class Issues {
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "issue", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "issues", cascade = CascadeType.ALL, orphanRemoval = true) // 'issue' to 'issues'
     private List<Comments> comments = new ArrayList<>();
-
     public Issues() {
     }
 
