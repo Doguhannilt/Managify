@@ -1,6 +1,7 @@
 package com.econ.managify.controller;
 
 import com.econ.managify.config.JwtProvider;
+import com.econ.managify.interfaces.SubscriptionService;
 import com.econ.managify.model.User;
 import com.econ.managify.repository.UserRepository;
 import com.econ.managify.request.loginRequest;
@@ -28,11 +29,12 @@ public class AuthController {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final CustomUserDetailsService customUserDetailsService;
-
-    public AuthController(UserRepository userRepository, PasswordEncoder passwordEncoder, CustomUserDetailsService customUserDetailsService) {
+    private final SubscriptionService subscriptionService;
+    public AuthController(UserRepository userRepository, PasswordEncoder passwordEncoder, CustomUserDetailsService customUserDetailsService, SubscriptionService subscriptionService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.customUserDetailsService = customUserDetailsService;
+        this.subscriptionService = subscriptionService;
     }
 
     @PostMapping("/signup")
@@ -47,6 +49,8 @@ public class AuthController {
         createdUser.setFullName(user.getFullName());
 
         User savedUser = userRepository.save(createdUser);
+
+        subscriptionService.createSubscription(savedUser);
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
         SecurityContextHolder.getContext().setAuthentication(authentication);
