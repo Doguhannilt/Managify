@@ -120,4 +120,6 @@ public class ProjectServiceImp implements ProjectService {
     public List<Project> searchProjects(String keyword, User user) throws Exception {
         return projectRepository.findByNameContainingAndTeamContains(keyword, user);
     }
+
+
 }
