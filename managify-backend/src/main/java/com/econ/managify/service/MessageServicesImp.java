@@ -15,19 +15,17 @@ import java.util.List;
 @Service
 public class MessageServicesImp implements MessageService {
 
-    private final MessageService messageService;
     private final UserService userService;
     private final ProjectService projectService;
     private final UserRepository userRepository;
     private final MessageRepository messageRepository;
-    public MessageServicesImp(MessageService messageService, UserService userService, ProjectService projectService, UserRepository userRepository, MessageRepository messageRepository) {
-        this.messageService = messageService;
+
+    public MessageServicesImp(UserService userService, ProjectService projectService, UserRepository userRepository, MessageRepository messageRepository) {
         this.userService = userService;
         this.projectService = projectService;
         this.userRepository = userRepository;
         this.messageRepository = messageRepository;
     }
-
 
     @Override
     public Message sendMessage(Long senderId, Long projectId, String content) throws Exception {

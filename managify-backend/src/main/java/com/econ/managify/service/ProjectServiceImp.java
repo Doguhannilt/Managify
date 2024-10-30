@@ -7,6 +7,7 @@ import com.econ.managify.model.Chat;
 import com.econ.managify.model.Project;
 import com.econ.managify.model.User;
 import com.econ.managify.repository.ProjectRepository;
+import com.econ.managify.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,11 +20,13 @@ public class ProjectServiceImp implements ProjectService {
     private final ProjectRepository projectRepository;
     private final UserService userService;
     private final ChatService chatService;
+    private final UserRepository userRepository;
 
-    public ProjectServiceImp(ProjectRepository projectRepository, UserService userService, ChatService chatService) {
+    public ProjectServiceImp(ProjectRepository projectRepository, UserService userService, ChatService chatService, UserRepository userRepository) {
         this.projectRepository = projectRepository;
         this.userService = userService;
         this.chatService = chatService;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -36,10 +39,16 @@ public class ProjectServiceImp implements ProjectService {
         createdProject.setDescription(project.getDescription());
         createdProject.getTeam().add(user);
 
+        // Projeyi kaydet
         Project savedProject = projectRepository.save(createdProject);
+
+        // Kullanıcının proje sayısını güncelle
+        user.setProjectSize(user.getProjectSize() + 1); // Proje sayısını artır
+        userRepository.save(user); // Kullanıcıyı güncelle
+
+        // Chat oluşturma işlemi
         Chat chat = new Chat();
         chat.setProject(savedProject);
-
         Chat projectChat = chatService.createChat(chat);
         savedProject.setChat(projectChat);
 
@@ -48,17 +57,23 @@ public class ProjectServiceImp implements ProjectService {
 
     @Override
     public List<Project> getProjectByTeam(User user, String category, String tag) throws Exception {
-        List<Project> projects = projectRepository.findByNameContainingAndTeamContains(String.valueOf(user), user);
-        if(category != null) {
-            projects = projects.stream().filter(project -> project.getCategory().equals(category))
+        List<Project> projects = projectRepository.findByTeamContains(user);
+
+        if (category != null) {
+            projects = projects.stream()
+                    .filter(project -> project.getCategory().equals(category))
                     .collect(Collectors.toList());
         }
-        if(tag != null) {
-            projects = projects.stream().filter(project -> project.getTags().contains(tag))
+
+        if (tag != null) {
+            projects = projects.stream()
+                    .filter(project -> project.getTags().contains(tag))
                     .collect(Collectors.toList());
         }
+
         return projects;
     }
+
 
     @Override
     public Project getProjectById(Long projectId) throws Exception {

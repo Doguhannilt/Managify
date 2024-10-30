@@ -63,6 +63,6 @@ public class CommentServiceImp implements CommentService {
 
     @Override
     public List<Comments> findCommentByIssue(Long issueId) {
-        return commentRepository.findByIssueId(issueId);
+        return commentRepository.findByIssuesId(issueId);
     }
 }
