@@ -10,6 +10,8 @@ import com.econ.managify.response.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/issues")
 public class IssueController {
@@ -27,10 +29,9 @@ public class IssueController {
     }
 
     @GetMapping("/project/{projectId}")
-    public ResponseEntity<Issues> getIssueByProjectId(@PathVariable Long ProjectId) throws Exception{
-        return ResponseEntity.ok((Issues) issueService.getIssueByProjectId(ProjectId));
+    public ResponseEntity<List<Issues>> getIssueByProjectId(@PathVariable Long projectId) throws Exception {
+        return ResponseEntity.ok(issueService.getIssueByProjectId(projectId));
     }
-
     @PostMapping
     public ResponseEntity<IssueDTO> createIssue(@RequestBody IssueRequest issue, @RequestHeader("Authorization") String token) throws Exception{
         User tokenUser = userService.findUserProfileByJwt(token);
@@ -50,7 +51,7 @@ public class IssueController {
             return  ResponseEntity.ok(issueDTO);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{issueId}")
     public ResponseEntity<ApiResponse> deleteIssue(@PathVariable Long issueId, @RequestHeader("Authorization") String token) throws  Exception {
         User user = userService.findUserProfileByJwt(token);
         issueService.deleteIssue(issueId, user.getId());

@@ -38,7 +38,10 @@ public class ProjectController {
             @RequestHeader("Authorization") String jwt
     ) throws Exception {
         User user = userService.findUserProfileByJwt(jwt);
+        System.out.println("PROJECT CONTROLLER"+user);
         List<Project> projects = projectService.getProjectByTeam(user, category, tag);
+        System.out.println("PROJECT"+projects);
+
         return new ResponseEntity<>(projects, HttpStatus.OK);
     }
 
