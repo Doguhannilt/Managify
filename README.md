@@ -73,3 +73,42 @@
    - Refined request and response objects for consistency and improved API response structure.
 - **Service Implementations**:
    - Updated various service implementations (e.g., `CommentServiceImp`, `EmailServiceImp`) to enhance business logic and performance.
+
+### October 27  
+- Updated JWT configuration files (`JwtConstant`, `JwtProvider`, and `JwtTokenValidator`) to enhance token validation and security mechanisms.
+- Improved error handling in `IssueController` for better exception management.
+
+### October 28 
+- Enhanced `PaymentController`, `ProjectController`, and `UserController` to improve error handling and user validation.
+- Minor updates to the `User` model, adding validation layers to strengthen data integrity and security.
+
+### October 29  
+- Updated `CommentRepository` and `ProjectRepository` with optimizations for query performance.
+
+### October 30  
+- Improved functionality and structure in `CommentServiceImp`, `MessageServicesImp`, and `ProjectServiceImp` to streamline service logic and improve code readability. 
+
+
+## POSTMAN: <a href="https://www.postman.com/spacecraft-astronaut-67997412/managify/overview">Click me!</a>
+| **Endpoint**                            | **Method** | **Description**                      |
+|-----------------------------------------|------------|--------------------------------------|
+| `/auth/signup`                          | POST       | Register a new user                 |
+| `/auth/signing`                         | POST       | Log in a user                       |
+| `/api/users/profile`                    | GET        | Retrieve user profile               |
+| `/api/projects`                         | POST       | Create a new project                |
+| `/api/projects/{id}`                    | GET        | Get project by ID                   |
+| `/api/projects/{id}`                    | DELETE     | Delete project by ID                |
+| `/api/projects`                         | GET        | Get all projects                    |
+| `/api/projects/search?keyword={keyword}`| GET        | Search projects by keyword          |
+| `/api/issues`                           | POST       | Create a new issue                  |
+| `/api/issues/{id}`                      | GET        | Get issue by user ID                |
+| `/api/issues/project/{projectId}`       | GET        | Get all issues by project ID        |
+| `/api/issues/{id}/status/{status}`      | PUT        | Update issue status                 |
+| `/api/issues/{id}/status/{status}`      | DELETE     | Delete issue status                 |
+| `/api/issues/{id}/assignee/{userId}`    | PUT        | Assign an issue to a user           |
+| `/api/projects/{id}/chat`               | GET        | Retrieve chat by project ID         |
+| `/api/messages/chat/{projectId}`        | GET        | Get messages by project ID          |
+| `/api/messages/send`                    | POST       | Send a new message                  |
+| `/api/comments/{id}`                    | GET        | Get a comment by ID                 |
+
+
