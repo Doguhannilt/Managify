@@ -112,3 +112,13 @@
 | `/api/comments/{id}`                    | GET        | Get a comment by ID                 |
 
 
+### 3 November
+
+- **Cache management** has been implemented in the project controller.
+- The following endpoints now utilize caching:
+  - **GET /api/projects**: The endpoint for listing projects has been cached based on user ID, along with category and tag filters.
+  - **GET /api/projects/{projectId}**: The endpoint for retrieving details of a single project has been cached using the project ID.
+  - **PATCH /api/projects/{projectId}**: When updating a project, the associated cache entry is updated accordingly.
+  - **DELETE /api/projects/{projectId}**: Upon deleting a project, the corresponding project data is removed from the cache.
+  - **GET /api/projects/search**: The endpoint for searching projects by keyword now caches the results.
+
