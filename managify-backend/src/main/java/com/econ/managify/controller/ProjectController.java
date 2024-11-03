@@ -9,12 +9,16 @@ import com.econ.managify.model.Project;
 import com.econ.managify.model.User;
 import com.econ.managify.request.InviteRequest;
 import com.econ.managify.response.ApiResponse;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 @RestController
 @RequestMapping("/api/projects")
 public class ProjectController {
@@ -32,21 +36,20 @@ public class ProjectController {
 
     // GET endpoint to fetch projects, optionally filtered by category or tag
     @GetMapping()
+    @Cacheable(value = "projects", key = "#user.id + '_' + #category + '_' + #tag")
     public ResponseEntity<List<Project>> getProjects(
             @RequestParam(required = false) String category,
             @RequestParam(required = false) String tag,
             @RequestHeader("Authorization") String jwt
     ) throws Exception {
         User user = userService.findUserProfileByJwt(jwt);
-        System.out.println("PROJECT CONTROLLER"+user);
         List<Project> projects = projectService.getProjectByTeam(user, category, tag);
-        System.out.println("PROJECT"+projects);
-
         return new ResponseEntity<>(projects, HttpStatus.OK);
     }
 
-    // GET endpoint to fetch a project by its ID
+
     @GetMapping("/{projectId}")
+    @Cacheable(value = "project", key = "#projectId")
     public ResponseEntity<Project> getProjectById(
             @PathVariable Long projectId,
             @RequestHeader("Authorization") String jwt
@@ -55,6 +58,7 @@ public class ProjectController {
         Project project = projectService.getProjectById(projectId);
         return new ResponseEntity<>(project, HttpStatus.OK);
     }
+
 
     // POST endpoint to create a new project
     @PostMapping
@@ -69,6 +73,7 @@ public class ProjectController {
 
     // PATCH endpoint to update an existing project
     @PatchMapping("/{projectId}")
+    @CachePut(value = "project", key = "#projectId")
     public ResponseEntity<Project> updateProject(
             @PathVariable Long projectId,
             @RequestHeader("Authorization") String jwt,
@@ -81,6 +86,7 @@ public class ProjectController {
 
     // DELETE endpoint to delete a project
     @DeleteMapping("/{projectId}")
+    @CacheEvict(value = "project", key = "#projectId")
     public ResponseEntity<ApiResponse> deleteProject(
             @PathVariable Long projectId,
             @RequestHeader("Authorization") String jwt
@@ -91,8 +97,10 @@ public class ProjectController {
         return new ResponseEntity<>(apiResponse, HttpStatus.OK);
     }
 
+
     // GET endpoint to search for projects by keyword
     @GetMapping("/search")
+    @Cacheable(value = "projectsSearch", key = "#keyword + '_' + #user.id")
     public ResponseEntity<List<Project>> searchProject(
             @RequestParam(required = false) String keyword,
             @RequestHeader("Authorization") String jwt
