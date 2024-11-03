@@ -3,28 +3,211 @@
 <head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Managify Documentation</title>
-    <link rel="stylesheet" href="../styles.css">
+    <title>Managify Project Documentation</title>
+    <link rel="icon" href="./img.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <header>
-        <h1>Welcome to Managify</h1>
+        <h1>Managify Project Documentation (OS)</h1>
         <nav>
             <ul>
-                <li><a href="installation.html">Installation</a></li>
-                <li><a href="usage.html">Usage</a></li>
-                <li><a href="api.html">API Reference</a></li>
-                <li><a href="contributing.html">Contributing</a></li>
-                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="#daily-updates">Daily Project Updates</a></li>
+                <li><a href="#database-schema">Database Schema Overview</a></li>
+                <li><a href="#service-enhancements">Service Enhancements</a></li>
+                <li><a href="#api-endpoints">API Endpoints</a></li>
+                <li><a href="#cache-management">Cache Management</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <h2>About Managify</h2>
-        <p>Managify is a project management tool that helps teams organize and manage their projects efficiently.</p>
+        <!-- Daily Project Updates -->
+        <section id="daily-updates">
+            <h2>Daily Project Updates</h2>
+            <div class="content">
+                <h3>20 October</h3>
+                <p>Project Initialization, Database Configuration, and Security Setup.</p>
+                
+                <h3>21 October</h3>
+                <p>User Model Creation, Authentication Setup, and JWT Fixes.</p>
+                
+                <h3>22 October</h3>
+                <p>Database Entity Corrections and JWT Finalization.</p>
+                
+                <h3>23 October</h3>
+                <p>Database Schema Overview: Entities, Relationships, and Structures.</p>
+                
+                <h3>24-30 October</h3>
+                <p>Schema Documentation, Service Enhancements, DTO Refinements, and Repository Optimizations.</p>
+                
+                <h3>3 November</h3>
+                <p>Cache Management Implementation in Project Controller.</p>
+            </div>
+        </section>
+
+        <!-- Database Schema Overview -->
+        <section id="database-schema">
+            <h2>Database Schema Overview</h2>
+            <div class="content">
+                <p>
+                    <strong>Entities:</strong><br>
+                    <ul>
+                        <li>Users: Manages user details like name, email, and project count.</li>
+                        <li>Issues: Tracks project-related issues with title, status, priority, and tags.</li>
+                        <li>Projects: Contains project data like name, description, and category.</li>
+                        <li>Chat: Represents user-project group chats.</li>
+                        <li>Messages: Stores chat messages with timestamps.</li>
+                        <li>Comments: Tracks comments on issues.</li>
+                    </ul>
+                </p>
+                <p>
+                    <strong>Relationships:</strong><br>
+                    <ul>
+                        <li>Users relate to Issues and Comments.</li>
+                        <li>Issues connect to Projects and Comments.</li>
+                        <li>Chat links Messages, Users, and Projects.</li>
+                    </ul>
+                </p>
+            </div>
+        </section>
+
+        <!-- Service Enhancements -->
+        <section id="service-enhancements">
+            <h2>Service Enhancements</h2>
+            <div class="content">
+                <p>
+                    <strong>25-30 October:</strong> Service Enhancements, Repository Optimization, DTO Refinements, and Controller Updates.
+                </p>
+                <p>
+                    Improved multiple controllers and services (e.g., ChatService, ProjectService) for better functionality and performance.
+                </p>
+            </div>
+        </section>
+
+        <!-- API Endpoints -->
+        <section id="api-endpoints">
+            <h2>API Endpoints</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Endpoint</th>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>/auth/signup</td>
+                        <td>POST</td>
+                        <td>Register a new user</td>
+                    </tr>
+                    <tr>
+                        <td>/auth/signing</td>
+                        <td>POST</td>
+                        <td>Log in a user</td>
+                    </tr>
+                    <tr>
+                        <td>/api/users/profile</td>
+                        <td>GET</td>
+                        <td>Retrieve user profile</td>
+                    </tr>
+                    <tr>
+                        <td>/api/projects</td>
+                        <td>POST</td>
+                        <td>Create a new project</td>
+                    </tr>
+                    <tr>
+                        <td>/api/projects/{id}</td>
+                        <td>GET</td>
+                        <td>Get project by ID</td>
+                    </tr>
+                    <!-- Add other endpoints similarly -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Cache Management -->
+        <section id="cache-management">
+            <h2>Cache Management</h2>
+            <div class="content">
+                <p>Cache management has been implemented in the project controller for optimized performance:</p>
+                <ul>
+                    <li><strong>GET /api/projects</strong>: Cached based on user ID, category, and tag filters.</li>
+                    <li><strong>GET /api/projects/{projectId}</strong>: Cached by project ID.</li>
+                    <li><strong>PATCH /api/projects/{projectId}</strong>: Updates associated cache entry on project update.</li>
+                    <li><strong>DELETE /api/projects/{projectId}</strong>: Removes corresponding project data from cache upon deletion.</li>
+                    <li><strong>GET /api/projects/search</strong>: Caches search results by keyword.</li>
+                </ul>
+            </div>
+        </section>
     </main>
+
+    <main>
+        <section>
+            <h2>Installation</h2>
+            <div class="content">
+                <p>Follow these steps to set up the Managify project on your local machine.</p>
+
+                <h3>Prerequisites</h3>
+                <ul>
+                    <li>Java Development Kit (JDK) 11 or higher</li>
+                    <li>Apache Maven</li>
+                    <li>PostgreSQL Database</li>
+                    <li>An IDE (e.g., IntelliJ, Eclipse)</li>
+                </ul>
+
+                <h3>Clone the Repository</h3>
+                <pre><code align="center">
+				git clone https://github.com/doguhannilt/managify.git
+		</code></pre>
+
+                <h3>Configure Application Properties</h3>
+                <p>In the <code>src/main/resources</code> directory, locate <code>application.properties</code> and add your PostgreSQL credentials and JWT settings as follows:</p>
+
+                <pre><code>
+		# Application Name
+		spring.application.name=managify
+
+		# Database Configuration
+		spring.datasource.url=jdbc:postgresql://localhost:5432/Managify
+		spring.datasource.username=your_db_username
+		spring.datasource.password=your_db_password
+		spring.datasource.driver-class-name=org.postgresql.Driver
+
+		# JPA and Hibernate Settings
+		spring.jpa.hibernate.ddl-auto=update
+		spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+		# JWT Settings
+		jwt.secret-key=YOUR_SECRET_KEY
+		jwt.expiration-ms=3600000
+                </code></pre>
+
+
+
+                <h3>Verify the Setup</h3>
+                <p>Once the application is running, visit <code>http://localhost:8080/api</code> to ensure that everything is configured properly.</p>
+            </div>
+        </section>
+    </main>
+
+<main>
+        <section>
+            <h2>Contact With Me</h2>
+            <div class="content">
+                <p>If you have any questions, feedback, or suggestions about Managify, feel free to reach out!</p>
+                
+                <h3>Email</h3>
+                <p><a href="mailto:doguhannilt@gmail.com">doguhannilt@gmail.com</a></p>
+
+
+            </div>
+        </section>
+    </main>
+
     <footer>
-        <p>&copy; 2024 Managify. All rights reserved.</p>
+        <p>2024 Managify Project</p>
     </footer>
 </body>
 </html>
