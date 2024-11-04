@@ -141,3 +141,25 @@
 
 - **Validate Project Owner and Name Test**: Implemented a test to check that each project returned for a user has the correct owner ID and a non-null project name.
 
+
+
+### 5 November
+
+- **Comment Service**:
+  - **createComment**: Verified successful creation with valid `issueId` and `userId`; handled exceptions for invalid IDs.
+  - **deleteComment**: Confirmed deletion functionality, validated exception handling for non-existent comments, invalid users, and unauthorized deletions.
+  - **findCommentByIssue**: Checked that the method returns a non-empty list of comments for a given `issueId`.
+
+- **Issue Service**:
+  - **getIssueById**: Ensured retrieval of issues by ID and proper exception handling for non-existent issues.
+  - **getIssueByProjectId**: Validated that issues can be retrieved by `projectId` and checked for exceptions if the project is not found.
+  - **createIssue**: Verified successful issue creation with valid data and project association.
+  - **deleteIssue**: Confirmed deletion of issues with appropriate checks for existence.
+  - **addUserToIssue**: Ensured users are added to issues and validated that proper exceptions are thrown for non-existent users and issues.
+  - **updateStatus**: Verified that issue status updates function correctly with valid IDs.
+
+- **User Service**:
+  - **loadUserByUsername**: Mocked user retrieval by email and ensured proper exception handling for non-existent users.
+
+- **Project Service**:
+  - **getProjectById**: Validated project retrieval by ID with appropriate exception handling for non-existent projects.
