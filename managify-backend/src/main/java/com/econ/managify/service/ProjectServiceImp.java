@@ -39,14 +39,13 @@ public class ProjectServiceImp implements ProjectService {
         createdProject.setDescription(project.getDescription());
         createdProject.getTeam().add(user);
 
-        // Projeyi kaydet
+
         Project savedProject = projectRepository.save(createdProject);
 
-        // Kullanıcının proje sayısını güncelle
-        user.setProjectSize(user.getProjectSize() + 1); // Proje sayısını artır
-        userRepository.save(user); // Kullanıcıyı güncelle
 
-        // Chat oluşturma işlemi
+        user.setProjectSize(user.getProjectSize() + 1);
+        userRepository.save(user);
+
         Chat chat = new Chat();
         chat.setProject(savedProject);
         Chat projectChat = chatService.createChat(chat);
@@ -87,7 +86,6 @@ public class ProjectServiceImp implements ProjectService {
     @Override
     public void deleteProject(Long projectId, Long userId) throws Exception {
         getProjectById(projectId);
-//        userService.findUserById(userId);
         projectRepository.deleteById(projectId);
     }
 
@@ -135,6 +133,8 @@ public class ProjectServiceImp implements ProjectService {
     public List<Project> searchProjects(String keyword, User user) throws Exception {
         return projectRepository.findByNameContainingAndTeamContains(keyword, user);
     }
+
+
 
 
 }
