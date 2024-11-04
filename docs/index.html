@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Managify Project Documentation</title>
     <link rel="icon" href="./img.png" type="image/x-icon">
-
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -14,144 +13,233 @@
         <nav>
             <ul>
                 <li><a href="#daily-updates">Daily Project Updates</a></li>
-                <li><a href="#database-schema">Database S.Overview</a></li>
+                <li><a href="#database-schema">Database Overview</a></li>
                 <li><a href="#service-enhancements">Service Enhancements</a></li>
-                <li><a href="#api-endpoints">API </a></li>
-                <li><a href="#cache-management">Cache M.</a></li>
+                <li><a href="#api-endpoints">API Endpoints</a></li>
+                <li><a href="#cache-management">Cache Management</a></li>
+                <li><a href="#unit-tests">Unit Tests</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <!-- Daily Project Updates -->
-        <section id="daily-updates">
-            <h2>Daily Project Updates</h2>
-            <div class="content">
-                <h3>20 October</h3>
-                <p>Project Initialization, Database Configuration, and Security Setup.</p>
-                
-                <h3>21 October</h3>
-                <p>User Model Creation, Authentication Setup, and JWT Fixes.</p>
-                
-                <h3>22 October</h3>
-                <p>Database Entity Corrections and JWT Finalization.</p>
-                
-                <h3>23 October</h3>
-                <p>Database Schema Overview: Entities, Relationships, and Structures.</p>
-                
-                <h3>24-30 October</h3>
-                <p>Schema Documentation, Service Enhancements, DTO Refinements, and Repository Optimizations.</p>
-                
-                <h3>3 November</h3>
-                <p>Cache Management Implementation in Project Controller.</p>
-		
-		<h3>4 November</h3>
-		<p>Repository Testing</p>
-            </div>
-        </section>
+ <section id="daily-updates">
+    <h2>Daily Project Updates</h2>
+    <div class="content">
+        <div class="update">
+            <h3>20 October</h3>
+            <p>Project Initialization, Database Configuration, and Security Setup.</p>
+        </div>
+        <div class="update">
+            <h3>21 October</h3>
+            <p>User Model Creation, Authentication Setup, and JWT Fixes.</p>
+        </div>
+        <div class="update">
+            <h3>22 October</h3>
+            <p>Database Entity Corrections and JWT Finalization.</p>
+        </div>
+        <div class="update">
+            <h3>23 October</h3>
+            <p>Database Schema Overview: Entities, Relationships, and Structures.</p>
+        </div>
+        <div class="update">
+            <h3>24-30 October</h3>
+            <p>Schema Documentation, Service Enhancements, DTO Refinements, and Repository Optimizations.</p>
+        </div>
+        <div class="update">
+            <h3>3 November</h3>
+            <p>Cache Management Implementation in Project Controller.</p>
+        </div>
+        <div class="update">
+            <h3>4 November</h3>
+            <p>Repository Testing.</p>
+        </div>
+    </div>
+</section>
 
-        <!-- Database Schema Overview -->
+
         <section id="database-schema">
             <h2>Database Schema Overview</h2>
             <div class="content">
-                <p>
-                    <strong>Entities:</strong><br>
-                    <ul>
-                        <li>Users: Manages user details like name, email, and project count.</li>
-                        <li>Issues: Tracks project-related issues with title, status, priority, and tags.</li>
-                        <li>Projects: Contains project data like name, description, and category.</li>
-                        <li>Chat: Represents user-project group chats.</li>
-                        <li>Messages: Stores chat messages with timestamps.</li>
-                        <li>Comments: Tracks comments on issues.</li>
-                    </ul>
-                </p>
-                <p>
-                    <strong>Relationships:</strong><br>
-                    <ul>
-                        <li>Users relate to Issues and Comments.</li>
-                        <li>Issues connect to Projects and Comments.</li>
-                        <li>Chat links Messages, Users, and Projects.</li>
-                    </ul>
-                </p>
-            </div>
-        </section>
-
-        <!-- Service Enhancements -->
-        <section id="service-enhancements">
-            <h2>Service Enhancements</h2>
-            <div class="content">
-                <p>
-                    <strong>25-30 October:</strong> Service Enhancements, Repository Optimization, DTO Refinements, and Controller Updates.
-                </p>
-                <p>
-                    Improved multiple controllers and services (e.g., ChatService, ProjectService) for better functionality and performance.
-                </p>
-            </div>
-        </section>
-
-        <!-- API Endpoints -->
-        <section id="api-endpoints">
-            <h2>API Endpoints</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Endpoint</th>
-                        <th>Method</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>/auth/signup</td>
-                        <td>POST</td>
-                        <td>Register a new user</td>
-                    </tr>
-                    <tr>
-                        <td>/auth/signing</td>
-                        <td>POST</td>
-                        <td>Log in a user</td>
-                    </tr>
-                    <tr>
-                        <td>/api/users/profile</td>
-                        <td>GET</td>
-                        <td>Retrieve user profile</td>
-                    </tr>
-                    <tr>
-                        <td>/api/projects</td>
-                        <td>POST</td>
-                        <td>Create a new project</td>
-                    </tr>
-                    <tr>
-                        <td>/api/projects/{id}</td>
-                        <td>GET</td>
-                        <td>Get project by ID</td>
-                    </tr>
-                    <!-- Add other endpoints similarly -->
-                </tbody>
-            </table>
-        </section>
-
-        <!-- Cache Management -->
-        <section id="cache-management">
-            <h2>Cache Management</h2>
-            <div class="content">
-                <p>Cache management has been implemented in the project controller for optimized performance:</p>
+                <strong>Entities:</strong>
                 <ul>
-                    <li><strong>GET /api/projects</strong>: Cached based on user ID, category, and tag filters.</li>
-                    <li><strong>GET /api/projects/{projectId}</strong>: Cached by project ID.</li>
-                    <li><strong>PATCH /api/projects/{projectId}</strong>: Updates associated cache entry on project update.</li>
-                    <li><strong>DELETE /api/projects/{projectId}</strong>: Removes corresponding project data from cache upon deletion.</li>
-                    <li><strong>GET /api/projects/search</strong>: Caches search results by keyword.</li>
+                    <li>Users: Manages user details like name, email, and project count.</li>
+                    <li>Issues: Tracks project-related issues with title, status, priority, and tags.</li>
+                    <li>Projects: Contains project data like name, description, and category.</li>
+                    <li>Chat: Represents user-project group chats.</li>
+                    <li>Messages: Stores chat messages with timestamps.</li>
+                    <li>Comments: Tracks comments on issues.</li>
+                </ul>
+                <strong>Relationships:</strong>
+                <ul>
+                    <li>Users relate to Issues and Comments.</li>
+                    <li>Issues connect to Projects and Comments.</li>
+                    <li>Chat links Messages, Users, and Projects.</li>
                 </ul>
             </div>
         </section>
-    </main>
 
-    <main>
+        <section id="service-enhancements">
+            <h2>Service Enhancements</h2>
+            <div class="content">
+                <strong>25-30 October:</strong> Service Enhancements, Repository Optimization, DTO Refinements, and Controller Updates.
+                <p>Improved multiple controllers and services (e.g., ChatService, ProjectService) for better functionality and performance.</p>
+            </div>
+        </section>
+
+ <section id="api-endpoints">
+    <h2>API Endpoints</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Endpoint</th>
+                <th>Method</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>/auth/signup</td>
+                <td>POST</td>
+                <td>Register a new user</td>
+            </tr>
+            <tr>
+                <td>/auth/signing</td>
+                <td>POST</td>
+                <td>Log in a user</td>
+            </tr>
+            <tr>
+                <td>/api/users/profile</td>
+                <td>GET</td>
+                <td>Retrieve user profile</td>
+            </tr>
+            <tr>
+                <td>/api/projects</td>
+                <td>POST</td>
+                <td>Create a new project</td>
+            </tr>
+            <tr>
+                <td>/api/projects/{id}</td>
+                <td>GET</td>
+                <td>Get project by ID</td>
+            </tr>
+            <tr>
+                <td>/api/projects/{id}</td>
+                <td>DELETE</td>
+                <td>Delete project by ID</td>
+            </tr>
+            <tr>
+                <td>/api/projects</td>
+                <td>GET</td>
+                <td>Get all projects</td>
+            </tr>
+            <tr>
+                <td>/api/projects/search?keyword={keyword}</td>
+                <td>GET</td>
+                <td>Search projects by keyword</td>
+            </tr>
+            <tr>
+                <td>/api/issues</td>
+                <td>POST</td>
+                <td>Create a new issue</td>
+            </tr>
+            <tr>
+                <td>/api/issues/{id}</td>
+                <td>GET</td>
+                <td>Get issue by user ID</td>
+            </tr>
+            <tr>
+                <td>/api/issues/project/{projectId}</td>
+                <td>GET</td>
+                <td>Get all issues by project ID</td>
+            </tr>
+            <tr>
+                <td>/api/issues/{id}/status/{status}</td>
+                <td>PUT</td>
+                <td>Update issue status</td>
+            </tr>
+            <tr>
+                <td>/api/issues/{id}/status/{status}</td>
+                <td>DELETE</td>
+                <td>Delete issue status</td>
+            </tr>
+            <tr>
+                <td>/api/issues/{id}/assignee/{userId}</td>
+                <td>PUT</td>
+                <td>Assign an issue to a user</td>
+            </tr>
+            <tr>
+                <td>/api/projects/{id}/chat</td>
+                <td>GET</td>
+                <td>Retrieve chat by project ID</td>
+            </tr>
+            <tr>
+                <td>/api/messages/chat/{projectId}</td>
+                <td>GET</td>
+                <td>Get messages by project ID</td>
+            </tr>
+            <tr>
+                <td>/api/messages/send</td>
+                <td>POST</td>
+                <td>Send a new message</td>
+            </tr>
+            <tr>
+                <td>/api/comments/{id}</td>
+                <td>GET</td>
+                <td>Get a comment by ID</td>
+            </tr>
+            <tr>
+                <td>/api/projects/search</td>
+                <td>GET</td>
+                <td>Search projects by keyword (cached)</td>
+            </tr>
+            <tr>
+                <td>/api/projects</td>
+                <td>GET</td>
+                <td>Cached based on user ID, category, and tag filters.</td>
+            </tr>
+            <tr>
+                <td>/api/projects/{projectId}</td>
+                <td>GET</td>
+                <td>Cached by project ID.</td>
+            </tr>
+            <tr>
+                <td>/api/projects/{projectId}</td>
+                <td>PATCH</td>
+                <td>Updates associated cache entry on project update.</td>
+            </tr>
+            <tr>
+                <td>/api/projects/{projectId}</td>
+                <td>DELETE</td>
+                <td>Removes corresponding project data from cache upon deletion.</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+        <section id="unit-tests">
+            <h2>Unit Tests</h2>
+            <div class="content">
+                <h3>Service and Repository Testing</h3>
+                <p>
+                    Implemented unit tests for key services and repositories using Mockito:
+                </p>
+                <ul>
+                    <li>Mocked repository methods to test service layer functionality.</li>
+                    <li>Ensured the correctness of the user authentication process.</li>
+                    <li>Tested project and issue management operations to validate business logic.</li>
+                    <li>Utilized assertions to confirm expected outcomes for various scenarios.</li>
+                    <li>Conducted edge case testing to ensure robust error handling.</li>
+                </ul>
+                <p>
+                    The testing approach enhances reliability and helps maintain code quality throughout the development process.
+                </p>
+            </div>
+        </section>
+        
         <section>
             <h2>Installation</h2>
             <div class="content">
                 <p>Follow these steps to set up the Managify project on your local machine.</p>
-
                 <h3>Prerequisites</h3>
                 <ul>
                     <li>Java Development Kit (JDK) 11 or higher</li>
@@ -162,53 +250,44 @@
 
                 <h3>Clone the Repository</h3>
                 <pre><code align="center">
-				git clone https://github.com/doguhannilt/managify.git
-		</code></pre>
+                    git clone https://github.com/doguhannilt/managify.git
+                </code></pre>
 
                 <h3>Configure Application Properties</h3>
                 <p>In the <code>src/main/resources</code> directory, locate <code>application.properties</code> and add your PostgreSQL credentials and JWT settings as follows:</p>
-
                 <pre><code>
-		# Application Name
-		spring.application.name=managify
+                    # Application Name
+                    spring.application.name=managify
 
-		# Database Configuration
-		spring.datasource.url=jdbc:postgresql://localhost:5432/Managify
-		spring.datasource.username=your_db_username
-		spring.datasource.password=your_db_password
-		spring.datasource.driver-class-name=org.postgresql.Driver
+                    # Database Configuration
+                    spring.datasource.url=jdbc:postgresql://localhost:5432/Managify
+                    spring.datasource.username=your_db_username
+                    spring.datasource.password=your_db_password
+                    spring.datasource.driver-class-name=org.postgresql.Driver
 
-		# JPA and Hibernate Settings
-		spring.jpa.hibernate.ddl-auto=update
-		spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+                    # JPA and Hibernate Settings
+                    spring.jpa.hibernate.ddl-auto=update
+                    spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 
-		# JWT Settings
-		jwt.secret-key=YOUR_SECRET_KEY
-		jwt.expiration-ms=3600000
+                    # JWT Settings
+                    jwt.secret-key=YOUR_SECRET_KEY
+                    jwt.expiration-ms=3600000
                 </code></pre>
-
-
 
                 <h3>Verify the Setup</h3>
                 <p>Once the application is running, visit <code>http://localhost:8080/api</code> to ensure that everything is configured properly.</p>
             </div>
         </section>
-    </main>
 
-<main>
         <section>
-            <h2>Contact With Me</h2>
+            <h2>Contact Me</h2>
             <div class="content">
                 <p>If you have any questions, feedback, or suggestions about Managify, feel free to reach out!</p>
-                
                 <h3>Email</h3>
                 <p><a href="mailto:doguhannilt@gmail.com">doguhannilt@gmail.com</a></p>
-
-
             </div>
         </section>
     </main>
-
     <footer>
         <p>2024 - Managify Project</p>
     </footer>
