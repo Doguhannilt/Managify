@@ -1,9 +1,7 @@
-package com.econ.managify;
+package com.econ.managify.repository;
 
 
 import com.econ.managify.model.User;
-import com.econ.managify.repository.UserRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,13 +15,12 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-public class UserServiceTest {
-
+public class UserRepositoryTest {
 
     @Autowired
-    private UserRepository userRepository;
+    private  UserRepository userRepository;
 
-    private static final Logger logger = LoggerFactory.getLogger(UserServiceTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserRepositoryTest.class);
 
 
     // Test: Save information using UserRepository | Repository Testing
@@ -84,13 +81,11 @@ public class UserServiceTest {
     @Test
     public void findUserByNonExistentId() throws Exception {
         // Act
-        Optional<User> findId = userRepository.findById(999L); 
+        Optional<User> findId = userRepository.findById(999L);
 
         // Assert
         assertFalse(findId.isPresent(), "User should not be found");
     }
-
-
 
 }
 
