@@ -22,7 +22,6 @@ public class UserRepositoryTest {
 
     private static final Logger logger = LoggerFactory.getLogger(UserRepositoryTest.class);
 
-
     // Test: Save information using UserRepository | Repository Testing
     @Test
     public void saveAllInformationFromUser() throws Exception {

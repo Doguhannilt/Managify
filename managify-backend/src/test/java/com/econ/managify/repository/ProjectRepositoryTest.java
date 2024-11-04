@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class ProjectRepositoryTest {
-    
+
     private static final Logger logger = LoggerFactory.getLogger(ProjectRepositoryTest.class);
 
     @Autowired
