@@ -122,3 +122,23 @@
   - **DELETE /api/projects/{projectId}**: Upon deleting a project, the corresponding project data is removed from the cache.
   - **GET /api/projects/search**: The endpoint for searching projects by keyword now caches the results.
 
+
+
+### 4 November
+
+- **Test for Saving User Information**: Created tests to ensure that user information can be saved successfully in the database and verified by retrieving the saved user by email.
+
+- **Find By Email Test**: Implemented a test to check if a user can be found by their email address and validated the retrieved user's details.
+
+- **Find All Users Test**: Added a test to confirm that all users can be retrieved from the database and ensured the list is not empty.
+
+- **Find Owner's Projects Test**: Developed a test to find all projects owned by a specific user and validated that the owner ID matches the expected user's ID.
+
+- **Count Projects By User Test**: Implemented a test to verify the number of projects associated with a user.
+
+- **Find Project By ID Test**: Created a test to ensure that a project can be found using its ID and validated that the correct project is returned.
+
+- **Delete Project Test**: Added a test to confirm that a project can be deleted from the database and that it no longer exists afterward.
+
+- **Validate Project Owner and Name Test**: Implemented a test to check that each project returned for a user has the correct owner ID and a non-null project name.
+
