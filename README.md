@@ -74,18 +74,18 @@
 - **Service Implementations**:
    - Updated various service implementations (e.g., `CommentServiceImp`, `EmailServiceImp`) to enhance business logic and performance.
 
-### October 27  
+### 27 October   
 - Updated JWT configuration files (`JwtConstant`, `JwtProvider`, and `JwtTokenValidator`) to enhance token validation and security mechanisms.
 - Improved error handling in `IssueController` for better exception management.
 
-### October 28 
+### 28 October 
 - Enhanced `PaymentController`, `ProjectController`, and `UserController` to improve error handling and user validation.
 - Minor updates to the `User` model, adding validation layers to strengthen data integrity and security.
 
-### October 29  
+### 29 October   
 - Updated `CommentRepository` and `ProjectRepository` with optimizations for query performance.
 
-### October 30  
+### 30 October   
 - Improved functionality and structure in `CommentServiceImp`, `MessageServicesImp`, and `ProjectServiceImp` to streamline service logic and improve code readability. 
 
 
@@ -121,7 +121,6 @@
   - **PATCH /api/projects/{projectId}**: When updating a project, the associated cache entry is updated accordingly.
   - **DELETE /api/projects/{projectId}**: Upon deleting a project, the corresponding project data is removed from the cache.
   - **GET /api/projects/search**: The endpoint for searching projects by keyword now caches the results.
-
 
 
 ### 4 November
