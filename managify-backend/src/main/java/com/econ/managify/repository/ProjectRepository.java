@@ -3,8 +3,6 @@ package com.econ.managify.repository;
 import com.econ.managify.model.Project;
 import com.econ.managify.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
