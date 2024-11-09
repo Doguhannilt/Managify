@@ -1,5 +1,5 @@
 
-## Ongoing Project  
+## Project is done
 ### Daily Project Updates  
 
 ### 20 October  
