@@ -13,7 +13,9 @@ body {
     align-items: center;
     line-height: 1.6;
 }
-
+.gif-container img {
+    animation: none; /* Prevent animation or looping */
+}
 header {
     width: 100%;
     padding: 20px;
@@ -21,6 +23,14 @@ header {
     color: #fff;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.gif-container {
+    text-align: center; /* Ortalamak için */
+}
+
+.gif-container img {
+    max-width: 100%; /* Ekrana sığmasını sağlamak */
+    height: auto;
 }
 
 header h1 {
